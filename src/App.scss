@@ -252,6 +252,7 @@ header {
   width: 266px;
   height: calc(100vh);
   padding-top: 74px;
+  padding-left: 10px;
   position: fixed;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -263,6 +264,7 @@ header {
   }
 
   li {
+    margin: 10px;
     &:hover .sidebar__project-delete {
       display: -webkit-box;
       display: -ms-flexbox;
