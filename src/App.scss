@@ -103,10 +103,10 @@ $generic-bg: #db4c3f;
   margin: 2px 5px;
 }
 
-// @mixin transparent-button() {
-//   background-color: transparent;
-//   border: 0;
-// }
+@mixin transparent-button() {
+  background-color: transparent;
+  border: 0;
+}
 
 @mixin task-item() {
   list-style-type: none;
@@ -138,11 +138,13 @@ $generic-bg: #db4c3f;
   ============================================ */
 .darkmode {
   header {
-    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     background-color: #282828;
     border-color: transparent;
   }
+  .app {}
+
+  .tasks {}
 }
 
 /* Header
@@ -150,9 +152,7 @@ $generic-bg: #db4c3f;
 header {
   border-bottom: solid 1px #ca2100;
   background-color: $generic-bg;
-  // -webkit-transition: height 200ms ease-in;
   transition: height 200ms ease-in;
-  // -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   height: 44px;
   z-index: 400;
@@ -166,8 +166,6 @@ header {
 
   nav {
     display: grid;
-    // -webkit-box-align: center;
-    //     -ms-flex-align: center;
     align-items: center;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
@@ -220,21 +218,19 @@ header {
             margin-right: 15px;
             font-size: 30px;
 
-            // button {
-            //   @include transparent-button();
-            //   color: white;
-            //   cursor: pointer;
-            // }
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+            }
           }
 
           &.settings__darkmode {
-            // button {
-            //   @include transparent-button();
-            //   color: white;
-            //   cursor: pointer;
-            //   display: -webkit-box;
-            //   display: -ms-flexbox;
-            //   display: flex;
+            button {
+              @include transparent-button();
+              color: white;
+              cursor: pointer;
+              display: flex;
 
             svg {
               width: 20px;
@@ -242,6 +238,7 @@ header {
             }
           }
         }
+      }
       }
     }
   }
@@ -464,7 +461,7 @@ header {
     }
 
     button {
-      @include btn(50px);
+      @include btn('50px');
     }
     span {
       @include cancel();
@@ -673,19 +670,19 @@ header {
         fill: grey;
       }
 
-    // div:nth-child(1) {
-    //   padding: 10px;
-    //   width: 100%;
-    //   display: flex;
-    //   align-items: center;
+      // div:nth-child(1) {
+      //   padding: 10px;
+      //   width: 100%;
+      //   display: flex;
+      //   align-items: center;
 
-    //   span:first-of-type {
-    //     margin-right: 10px;
+      //   span:first-of-type {
+      //     margin-right: 10px;
 
-    //     svg {
-    //       fill: grey;
-    //     }
-    //   }
+      //     svg {
+      //       fill: grey;
+      //     }
+      //   }
     }
   }
 }
@@ -734,7 +731,7 @@ header {
   }
 
   &__submit {
-    @include btn(100px);
+    @include btn('100px');
   }
 
   &__cancel {

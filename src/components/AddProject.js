@@ -8,7 +8,7 @@ export const AddProject = ({ shouldShow = false }) => {
   const [projectName, setProjectName] = useState("");
 
   const projectId = generatePushId();
-  const { setProjects } = useProjectsValue();
+  const { projects, setProjects } = useProjectsValue();
 
   const addProject = () =>
     projectName &&
@@ -21,7 +21,7 @@ export const AddProject = ({ shouldShow = false }) => {
         userId: "user-collection-value"
       })
       .then(() => {
-        setProjects([]);
+        setProjects([...projects]);
         setProjectName("");
         setShow(false);
       });
