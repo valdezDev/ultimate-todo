@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPizzaSlice } from "react-icons/fa";
+import { GiCandleLight } from "react-icons/gi";
 
 import { AddTask } from "../AddTask";
 
@@ -15,25 +15,29 @@ export const Header = ({ darkMode, setDarkMode }) => {
         </div>
         <div className="settings">
           <ul>
-            <li
-              data-testid="quick-add-task-action"
-              className="settings__add"
-              onClick={() => {
-                setShowQuickAddTask(true);
-                setShouldShowMain(true);
-              }}
-            >
-              +
-            </li>
-            <li className="settings__darkmode">
+            <li data-testid="quick-add-task-action" className="settings__add">
               <button
-                data-testid="dark-mode-action"
+                type="button"
+                onClick={() => {
+                  setShowQuickAddTask(true);
+                  setShouldShowMain(true);
+                }}
+                onKeyDown={() => {
+                  setShowQuickAddTask(true);
+                  setShouldShowMain(true);
+                }}
+              >
+                +
+              </button>
+            </li>
+            <li className="settings__darkmode" data-testid="dark-mode-action">
+              <button
                 aria-label="Darkmode on/off"
                 type="button"
                 onClick={() => setDarkMode(!darkMode)}
                 onKeyDown={() => setDarkMode(!darkMode)}
               >
-                <FaPizzaSlice />
+                <GiCandleLight />
               </button>
             </li>
           </ul>
