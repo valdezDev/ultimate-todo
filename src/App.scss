@@ -376,54 +376,45 @@ header {
 
   &__generic {
     li {
-      padding: 10px 0 10px 10px;
+      // padding: 10px 0 10px 10px;
       list-style-type: none;
       color: #333;
-      // display: -webkit-box;
-      // display: -ms-flexbox;
       display: flex;
       cursor: pointer;
       line-height: 1.5;
       font-size: 15px;
-      // padding-left: 0;
-      // padding-right: 0;
-      div {
-        outline: none !important;
-      }
+      padding-left: 0;
+      padding-right: 0;
 
-      span:first-of-type {
-        margin-right: 10px;
-
-        svg {
-          width: 18px;
-          height: 18px;
-          color: #555;
-        }
-      }
-
-      // div:nth-child(1) {
-      //   display: -webkit-box;
-      //   display: -ms-flexbox;
+      // span:first-of-type {
+      //   margin-right: 10px;
       //   display: flex;
-      //   padding: 10px 0 10px 10px;
-      //   width: 100%;
+      //   align-items: center;
 
-      //   span:first-of-type {
-      //     margin-right: 10px;
-      //     display: -webkit-box;
-      //     display: -ms-flexbox;
-      //     display: flex;
-      //     -webkit-box-align: center;
-      //         -ms-flex-align: center;
-      //             align-items: center;
-
-      //     svg {
-      //       width: 18px;
-      //       height: 18px;
-      //       color: #555;
-      //     }
+      //   svg {
+      //     width: 18px;
+      //     height: 18px;
+      //     color: #555;
       //   }
       // }
+
+      div:nth-child(1) {
+        display: flex;
+        padding: 10px 0 10px 10px;
+        width: 100%;
+
+        span:first-of-type {
+          margin-right: 10px;
+          display: flex;
+          align-items: center;
+
+          svg {
+            width: 18px;
+            height: 18px;
+            color: #555;
+          }
+        }
+      }
 
       &.active,
       &:hover {
@@ -697,12 +688,12 @@ header {
 
   &__list li {
     @include task-item();
-    // padding: 0;
+    padding: 0;
 
-    // div:nth-child(1) {
-    //   width: 100%;
-    //   padding: 10px;
-    // }
+    div:nth-child(1) {
+      width: 100%;
+      padding: 10px;
+    }
   }
 }
 
