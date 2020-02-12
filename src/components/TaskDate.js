@@ -13,6 +13,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
               setTaskDate(moment().format("DD/MM/YYYY"));
             }}
             tabIndex={0}
+            aria-label="Select today as the task date"
             role="button"
           >
             <span>
@@ -40,6 +41,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
               );
             }}
             tabIndex={0}
+            aria-label="Select today as the task date"
             role="button"
           >
             <span>
@@ -67,6 +69,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
               );
             }}
             tabIndex={0}
+            aria-label="Select next week as the task date"
             role="button"
           >
             <span>
