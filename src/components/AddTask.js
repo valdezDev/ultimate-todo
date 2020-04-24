@@ -11,7 +11,7 @@ export const AddTask = ({
   showAddTaskMain = true,
   shouldShowMain = false,
   showQuickAddTask,
-  setShowQuickAddTask
+  setShowQuickAddTask,
 }) => {
   const [task, setTask] = useState("");
   const [taskDate, setTaskDate] = useState("");
@@ -29,9 +29,7 @@ export const AddTask = ({
     if (projectId === "TODAY") {
       collatedDate = moment().format("DD/MM/YYYY");
     } else if (projectId === "NEXT_7") {
-      collatedDate = moment()
-        .add(7, "days")
-        .format("DD/MM/YYYY");
+      collatedDate = moment().add(7, "days").format("DD/MM/YYYY");
     }
 
     return (
@@ -45,7 +43,7 @@ export const AddTask = ({
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: "user-collection-value"
+          userId: "user-collection-value",
         })
         .then(() => {
           setTask("");
@@ -77,7 +75,7 @@ export const AddTask = ({
       )}
 
       {(showMain || showQuickAddTask) && (
-        <div className="add-task__main" data-testi="add-task-main">
+        <div className="add-task__main" data-testid="add-task-main">
           {showQuickAddTask && (
             <>
               <div data-testid="quick-add-task">
@@ -120,14 +118,14 @@ export const AddTask = ({
             aria-label="Enter your task"
             data-testid="add-task-content"
             value={task}
-            onChange={e => setTask(e.target.value)}
+            onChange={(e) => setTask(e.target.value)}
           />
           <button
             className="add-task__submit"
             data-testid="add-task"
             type="button"
-            onClick={() => 
-              showQuickAddTask 
+            onClick={() =>
+              showQuickAddTask
                 ? addTask() && setShowQuickAddTask(false)
                 : addTask()
             }
@@ -143,7 +141,7 @@ export const AddTask = ({
                 setShowMain(false);
                 setShowProjectOverlay(false);
               }}
-              onKeyPress={() => {
+              onKeyDown={() => {
                 setShowMain(false);
                 setShowProjectOverlay(false);
               }}
