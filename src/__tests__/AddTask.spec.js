@@ -201,7 +201,7 @@ describe("<AddTask />", () => {
       expect(setShowQuickAddTask).toHaveBeenCalled;
     });
 
-    it("renders <AddTask /> and adds a task with a task date", () => {
+    it("renders <AddTask /> and adds a task with a task date of TODAY", () => {
       useSelectedProjectValue.mockImplementation(() => ({
         selectedProject: "1",
       }));
@@ -223,6 +223,76 @@ describe("<AddTask />", () => {
 
       fireEvent.click(queryByTestId("task-date-today"));
       expect(queryByTestId("task-date-overlay")).toBeFalsy();
+
+      fireEvent.click(queryByTestId('show-task-date-overlay'));
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      // fireEvent.keyDown(queryByTestId('task-date-today'));
+      // expect(queryByTestId('task-date-overlay')).toBeFalsy();
+
+      fireEvent.click(queryByTestId("add-task"));
+    });
+
+    it("renders <AddTask /> and adds a task with a task date of TOMORROW", () => {
+      useSelectedProjectValue.mockImplementation(() => ({
+        selectedProject: "1",
+      }));
+
+      const { queryByTestId } = render(<AddTask showMain />);
+      fireEvent.click(queryByTestId("show-main-action"));
+      expect(queryByTestId("add-task-content")).toBeTruthy();
+      expect(queryByTestId("add-task-main")).toBeTruthy();
+
+      fireEvent.change(queryByTestId("add-task-content"), {
+        target: { value: "Newer Task Testing Template" },
+      });
+      expect(queryByTestId("add-task-content").value).toBe(
+        "Newer Task Testing Template"
+      );
+
+      fireEvent.click(queryByTestId("show-task-date-overlay"));
+      expect(queryByTestId("task-date-overlay")).toBeTruthy();
+
+      fireEvent.click(queryByTestId("task-date-tomorrow"));
+      expect(queryByTestId("task-date-overlay")).toBeFalsy();
+
+      fireEvent.click(queryByTestId('show-task-date-overlay'));
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-tomorrow'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy();
+
+      fireEvent.click(queryByTestId("add-task"));
+    });
+
+    it("renders <AddTask /> and adds a task with a task date of NEXT_7", () => {
+      useSelectedProjectValue.mockImplementation(() => ({
+        selectedProject: "1",
+      }));
+
+      const { queryByTestId } = render(<AddTask showMain />);
+      fireEvent.click(queryByTestId("show-main-action"));
+      expect(queryByTestId("add-task-content")).toBeTruthy();
+      expect(queryByTestId("add-task-main")).toBeTruthy();
+
+      fireEvent.change(queryByTestId("add-task-content"), {
+        target: { value: "Newer Task Testing Template" },
+      });
+      expect(queryByTestId("add-task-content").value).toBe(
+        "Newer Task Testing Template"
+      );
+
+      fireEvent.click(queryByTestId("show-task-date-overlay"));
+      expect(queryByTestId("task-date-overlay")).toBeTruthy();
+
+      fireEvent.click(queryByTestId("task-date-next-week"));
+      expect(queryByTestId("task-date-overlay")).toBeFalsy();
+
+      fireEvent.click(queryByTestId('show-task-date-overlay'));
+      expect(queryByTestId('task-date-overlay')).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId('task-date-next-week'));
+      expect(queryByTestId('task-date-overlay')).toBeFalsy();
 
       fireEvent.click(queryByTestId("add-task"));
     });
