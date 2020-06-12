@@ -18,7 +18,7 @@ export const AddProject = ({ shouldShow = false }) => {
       .add({
         projectId,
         name: projectName,
-        userId: "user-collection-value"
+        userId: "user-collection-value",
       })
       .then(() => {
         setProjects([...projects]);
@@ -29,12 +29,12 @@ export const AddProject = ({ shouldShow = false }) => {
   return (
     <div className="add-project" data-testid="add-project">
       {show && (
-        <div className="add-project__input">
+        <div className="add-project__input" data-testid="add-project-inner">
           <input
             value={projectName}
-            onChange={e => setProjectName(e.target.value)}
+            onChange={(e) => setProjectName(e.target.value)}
             className="add-project__name"
-            data-testId="project-name"
+            data-testid="project-name"
             type="text"
             placeholder="Name your project..."
           />
@@ -49,7 +49,7 @@ export const AddProject = ({ shouldShow = false }) => {
           <span
             aria-label="Cancel adding project"
             data-testid="hide-project-overlay"
-            classNAme="add-project__cancel"
+            className="add-project__cancel"
             onClick={() => setShow(false)}
             onKeyDown={() => setShow(false)}
             role="button"
