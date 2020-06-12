@@ -52,6 +52,7 @@ describe("<Header />", () => {
       expect(queryByTestId("header")).toBeTruthy();
 
       fireEvent.click(queryByTestId("quick-add-task-action"));
+      expect(queryByTestId("add-task-main")).toBeTruthy();
     });
 
     it("renders the header component and set quick add task to TRUE using onKeyDown", () => {
@@ -61,6 +62,33 @@ describe("<Header />", () => {
       expect(queryByTestId("header")).toBeTruthy();
 
       fireEvent.keyDown(queryByTestId("quick-add-task-action"));
+      expect(queryByTestId("add-task-main")).toBeTruthy();
+    });
+
+    it("renders the header component and set quick add task to TRUE and then FALSE using onClick", () => {
+      const darkMode = false;
+
+      const { queryByTestId } = render(<Header darkMode={darkMode} />);
+      expect(queryByTestId("header")).toBeTruthy();
+
+      fireEvent.click(queryByTestId("quick-add-task-action"));
+      expect(queryByTestId("add-task-main")).toBeTruthy();
+
+      fireEvent.click(queryByTestId("add-task-quick-cancel"));
+      expect(queryByTestId("add-task-main")).toBeFalsy();
+    });
+
+    it("renders the header component and set quick add task to TRUE and then FALSE using onKeyDown", () => {
+      const darkMode = false;
+
+      const { queryByTestId } = render(<Header darkMode={darkMode} />);
+      expect(queryByTestId("header")).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId("quick-add-task-action"));
+      expect(queryByTestId("add-task-main")).toBeTruthy();
+
+      fireEvent.keyDown(queryByTestId("add-task-quick-cancel"));
+      expect(queryByTestId("add-task-main")).toBeFalsy();
     });
   });
 });
