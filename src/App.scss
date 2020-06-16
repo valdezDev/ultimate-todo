@@ -2,13 +2,11 @@
 
 // General Settings
 html {
-  // -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 *,
 *:before,
 *:after {
-  // -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
 
@@ -33,12 +31,11 @@ ul {
 $generic-box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 0px 1px,
   rgba(0, 0, 0, 0.1) 0px 4px 11px;
 $generic-border: 1px solid #f1f1f1;
-$generic-bg: #db4c3f;
+$generic-bg: goldenrod;
 
 /* Mixins
   ============================================ */
 @mixin box-overlay() {
-  // -webkit-box-shadow: $generic-box-shadow;
   box-shadow: $generic-box-shadow;
   position: absolute;
   width: 100%;
@@ -50,20 +47,10 @@ $generic-bg: #db4c3f;
 @mixin va($va-align: center) {
   display: flex;
   align-items: center;
-  // display: -webkit-box;
-  // display: -ms-flexbox;
-  // display: flex;
-  // -webkit-box-align: center;
-  //     -ms-flex-align: center;
-  //         align-items: center;
 
   @if $va-align != center {
-    // -webkit-box-pack: left;
-    //     -ms-flex-pack: left;
     justify-content: left;
   } @else {
-    // -webkit-box-pack: center;
-    //     -ms-flex-pack: center;
     justify-content: center;
   }
 }
@@ -110,8 +97,6 @@ $generic-bg: #db4c3f;
 
 @mixin task-item() {
   list-style-type: none;
-  // display: -webkit-box;
-  // display: -ms-flexbox;
   display: flex;
   line-height: 18px;
   color: #333;
@@ -134,23 +119,10 @@ $generic-bg: #db4c3f;
   }
 }
 
-/* Darkmode
-  ============================================ */
-.darkmode {
-  header {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-    background-color: #282828;
-    border-color: transparent;
-  }
-  .app {}
-
-  .tasks {}
-}
-
 /* Header
   ============================================ */
 header {
-  border-bottom: solid 1px #ca2100;
+  border-bottom: solid 1px goldenrod;
   background-color: $generic-bg;
   transition: height 200ms ease-in;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
@@ -343,8 +315,6 @@ header {
   &__middle {
     margin-top: 20px;
     margin-bottom: 20px;
-    // display: -webkit-box;
-    // display: -ms-flexbox;
     display: flex;
     border-bottom: $generic-border;
     padding-left: 10px;
@@ -355,7 +325,6 @@ header {
       margin-right: 10px;
 
       svg.hidden-projects {
-        // -webkit-transform: rotate(-90deg);
         transform: rotate(-90deg);
       }
     }
@@ -380,18 +349,6 @@ header {
       font-size: 15px;
       padding-left: 0;
       padding-right: 0;
-
-      // span:first-of-type {
-      //   margin-right: 10px;
-      //   display: flex;
-      //   align-items: center;
-
-      //   svg {
-      //     width: 18px;
-      //     height: 18px;
-      //     color: #555;
-      //   }
-      // }
 
       div:nth-child(1) {
         display: flex;
@@ -420,7 +377,6 @@ header {
   }
 }
 
-/*
 /* Show Confirm Delete
   ============================================ */
 .project-delete-modal {
@@ -620,7 +576,7 @@ header {
 
 .add-task__plus,
 .add-project__plus {
-  color: #dd4b39;
+  color: goldenrod;
   font-size: 18px;
 }
 
@@ -667,11 +623,6 @@ header {
   @include box-overlay();
   background-color: white;
 
-  // @include mq('900px') {
-  //   width: 200px;
-  //   right: 0;
-  // }
-
   &__list li {
     @include task-item();
     padding: 0;
@@ -710,5 +661,53 @@ header {
 
   &__cancel {
     @include cancel();
+  }
+}
+
+/* Darkmode
+  ============================================ */
+.darkmode {
+  background-color: black;
+  header {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
+    background-color: darken(goldenrod, 24%);
+    border-color: transparent;
+  }
+
+  .sidebar {
+    background-color: lighten(black, 25%);
+    
+    &__generic {
+    li {
+        color: goldenrod !important;
+      }
+    }
+
+    &__middle {
+      span, h2 {
+        color: lighten(goldenrod, 25%) !important;
+      }
+    }
+  }
+
+  .add-project {
+    background-color: lighten(black, 25%);
+    &__plus, &__text {
+      color: lighten(goldenrod, 40%);
+    }
+  }
+
+  .add-task {
+    &__text, &__cancel, &__date, &__project {
+      color: white !important;
+    }
+  }
+
+  .tasks {
+    background-color: black;
+    color: white !important;
+    &__list {
+      background-color: lighten(black, 4%);
+    }
   }
 }

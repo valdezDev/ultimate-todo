@@ -50,7 +50,7 @@ export const Tasks = () => {
     projects.length > 0 &&
     selectedProject &&
     !collatedTasksExist(selectedProject)
-  ) {
+  ) { 
     projectName = getTitle(projects, selectedProject).name;
   }
 

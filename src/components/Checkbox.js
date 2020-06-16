@@ -16,7 +16,6 @@ export const Checkbox = ({ id, taskDesc }) => {
     <div
       className="checkbox-holder"
       data-testid="checkbox-action"
-      aria-label=""
       onClick={() => archiveTask()}
       onKeyDown={() => archiveTask()}
       aria-label={`Mark ${taskDesc} as done?`}

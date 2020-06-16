@@ -7,13 +7,15 @@ export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
   const [archivedTasks, setArchivedTasks] = useState([]);
 
+  // if there are no collated tasks, unsubscribe 
+  // essentially saying: give the tasks of a selected project
   useEffect(() => {
     let unsubscribe = firebase
       .firestore()
       .collection("tasks")
+      // only one user
       .where("userId", "==", "user-collection-value");
 
-    // 48:
     unsubscribe =
       selectedProject && !collatedTasksExist(selectedProject)
         ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
@@ -26,6 +28,7 @@ export const useTasks = selectedProject => {
         : selectedProject === "INBOX" || selectedProject === 0
         ? (unsubscribe = unsubscribe.where("date", "==", ""))
         : unsubscribe;
+
     unsubscribe = unsubscribe.onSnapshot(snapshot => {
       const newTasks = snapshot.docs.map(task => ({
         id: task.id,
@@ -41,9 +44,13 @@ export const useTasks = selectedProject => {
             )
           : newTasks.filter(task => task.archived !== true)
       );
+
+      // give all tasks that are true
       setArchivedTasks(newTasks.filter(task => task.archived !== false));
     });
 
+    // only check projects when there's a new [selectedProject]..
+    // when [selectedProject] changes, rerun useTasks hook..
     return () => unsubscribe();
   }, [selectedProject]);
 
@@ -66,6 +73,8 @@ export const useProjects = () => {
           docId: project.id
         }));
         
+        // conditional to prevent infinite loop of projects rerunning
+        // ... projects only need to be pulled one time.
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }
