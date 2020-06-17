@@ -1,22 +1,23 @@
 import { collatedTasks } from "../constants";
 
 export const getTitle = (projects, projectId) =>
-  projects.find(project => project.projectId === projectId);
+  projects.find((project) => project.projectId === projectId);
 
 export const getCollatedTitle = (projects, key) =>
-  projects.find(project => project.key === key);
+  projects.find((project) => project.key === key);
 
 // All tasks merged into one
-export const collatedTasksExist = selectedProject =>
-  collatedTasks.find(task => task.key === selectedProject);
+export const collatedTasksExist = (selectedProject) =>
+  collatedTasks.find((task) => task.key === selectedProject);
 
+// creates a random ID for projects
 export const generatePushId = (() => {
   const PUSH_CHARS =
     "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz";
 
   const lastRandChars = [];
 
-  return function() {
+  return function () {
     let now = new Date().getTime();
 
     const timeStampChars = new Array(8);

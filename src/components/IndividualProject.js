@@ -14,6 +14,7 @@ export const IndividualProject = ({ project }) => {
       .collection("projects")
       .doc(docId)
       .delete()
+      // reset projects once deleted
       .then(() => {
         setProjects([...projects]);
         setSelectedProject("INBOX");

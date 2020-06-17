@@ -20,6 +20,7 @@ export const AddTask = ({
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
 
+  // context
   const { selectedProject } = useSelectedProjectValue();
 
   const addTask = () => {
@@ -27,9 +28,9 @@ export const AddTask = ({
     let collatedDate = "";
 
     if (projectId === "TODAY") {
-      collatedDate = moment().format("DD/MM/YYYY");
+      collatedDate = moment().format("MM/DD/YYYY");
     } else if (projectId === "NEXT_7") {
-      collatedDate = moment().add(7, "days").format("DD/MM/YYYY");
+      collatedDate = moment().add(7, "days").format("MM/DD/YYYY");
     }
 
     return (

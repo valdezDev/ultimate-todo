@@ -204,13 +204,13 @@ header {
               cursor: pointer;
               display: flex;
 
-            svg {
-              width: 20px;
-              height: 20px;
+              svg {
+                width: 20px;
+                height: 20px;
+              }
             }
           }
         }
-      }
       }
     }
   }
@@ -400,7 +400,7 @@ header {
     }
 
     button {
-      @include btn('50px');
+      @include btn("50px");
     }
     span {
       @include cancel();
@@ -608,7 +608,7 @@ header {
 
       span:first-of-type {
         margin-right: 10px;
-  
+
         svg {
           fill: grey;
         }
@@ -656,7 +656,7 @@ header {
   }
 
   &__submit {
-    @include btn('100px');
+    @include btn("100px");
   }
 
   &__cancel {
@@ -676,15 +676,20 @@ header {
 
   .sidebar {
     background-color: lighten(black, 25%);
-    
+
     &__generic {
-    li {
+      li {
         color: goldenrod !important;
       }
     }
 
+    &__project-name {
+      color: lighten(goldenrod, 20%);
+    }
+
     &__middle {
-      span, h2 {
+      span,
+      h2 {
         color: lighten(goldenrod, 25%) !important;
       }
     }
@@ -692,13 +697,17 @@ header {
 
   .add-project {
     background-color: lighten(black, 25%);
-    &__plus, &__text {
+    &__plus,
+    &__text {
       color: lighten(goldenrod, 40%);
     }
   }
 
   .add-task {
-    &__text, &__cancel, &__date, &__project {
+    &__text,
+    &__cancel,
+    &__date,
+    &__project {
       color: white !important;
     }
   }
@@ -707,7 +716,10 @@ header {
     background-color: black;
     color: white !important;
     &__list {
-      background-color: lighten(black, 4%);
+      background-color: lighten(black, 4%) !important;
+      span {
+        color: white !important;
+      }
     }
   }
 }

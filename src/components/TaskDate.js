@@ -10,7 +10,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
           <div
             onClick={() => {
               setShowTaskDate(false);
-              setTaskDate(moment().format("DD/MM/YYYY"));
+              setTaskDate(moment().format("MM/DD/YYYY"));
             }}
             data-testid="task-date-today"
             tabIndex={0}
@@ -27,11 +27,11 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
           <div
             onClick={() => {
               setShowTaskDate(false);
-              setTaskDate(moment().add(1, "day").format("DD/MM/YYYY"));
+              setTaskDate(moment().add(1, "day").format("MM/DD/YYYY"));
             }}
             onKeyDown={() => {
               setShowTaskDate(false);
-              setTaskDate(moment().add(1, "day").format("DD/MM/YYYY"));
+              setTaskDate(moment().add(1, "day").format("MM/DD/YYYY"));
             }}
             data-testid="task-date-tomorrow"
             tabIndex={0}

@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, cleanup } from "@testing-library/react";
+import { render, cleanup } from "@testing-library/react";
 import { Tasks } from "../components/Tasks";
 import { useSelectedProjectValue } from "../context";
 
@@ -8,42 +8,53 @@ jest.mock("../context", () => ({
   useProjectsValue: jest.fn(() => ({
     projects: [
       {
-        name: "proj-1",
+        name: "devtodo",
         projectId: "1",
-        userId: "adjf0139jc",
-        docId: "proj-1-docid",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+        docId: "paul-valdez",
       },
       {
-        name: "proj-2",
+        name: "Daily",
         projectId: "2",
-        userId: "9dafjadif",
-        docId: "proj-2-docid",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+        docId: "daily-paul",
       },
       {
-        name: "proj-3",
+        name: "Future",
         projectId: "3",
-        userId: "cmdsakfj03",
-        docId: "proj-3-docid",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+        docId: "workout",
+      },
+      {
+        name: "words",
+        projectId: "4",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+        docId: "journal",
+      },
+      {
+        name: "blog",
+        projectId: "5",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+        docId: "dev-blog",
       },
     ],
   })),
 }));
 
-jest.mock("../hooks"),
-  () => ({
-    useTasks: () => ({
-      tasks: [
-        {
-          id: "06Q6MUzpskWyxHhdNMn8",
-          archived: false,
-          date: "18/02/2020",
-          projectId: "5",
-          task: "testTask",
-          userID: "user-collection-value",
-        },
-      ],
-    }),
-  });
+jest.mock("../hooks", () => ({
+  useTasks: () => ({
+    tasks: [
+      {
+        id: "mx2taaXpF38vYqMGbVtY",
+        archived: false,
+        date: "6/16/2020",
+        projectId: "1",
+        task: "go grocery shopping",
+        userId: "jlIFXIwyAL3tzHMtzRbw",
+      },
+    ],
+  }),
+}));
 
 beforeEach(cleanup);
 
@@ -71,7 +82,7 @@ describe("<Tasks />", () => {
 
     const { queryByTestId } = render(<Tasks />);
     expect(queryByTestId("tasks")).toBeTruthy();
-    expect(queryByTestId("project-name").textContent).toBe("proj-1");
+    expect(queryByTestId("project-name").textContent).toBe("devtodo");
   });
 
   it("renders a task with a collated title", () => {
